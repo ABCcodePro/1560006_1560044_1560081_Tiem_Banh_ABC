@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('index',[
+	'as'=>'trang_chủ',
+	'uses'=>'PageController@getIndex']);
