@@ -25,12 +25,12 @@
 				<div class="col-sm-4">
 				 <div class="col-sm-10">
 					<div class="widget">
-						<h4 class="widget-title">Contact Us</h4>
+						<h4 class="widget-title">Liên hệ chúng tôi</h4>
 						<div>
 							<div class="contact-info">
 								<i class="fa fa-map-marker"></i>
-								<p>30 South Park Avenue San Francisco, CA 94108 Phone: +78 123 456 78</p>
-								<p>Nemo enim ipsam voluptatem quia voluptas sit asnatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</p>
+								<p>135B Trần Hưng Đạo Q1 TPHCM, Phone: 01689472397 </p>
+								<p>Chúng tôi sẵn sàng chào đón bạn</p>
 							</div>
 						</div>
 					</div>

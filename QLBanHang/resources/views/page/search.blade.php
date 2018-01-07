@@ -24,7 +24,7 @@
 											<a href="{{route('chitietsanpham',$p->id)}}"><img src="source/image/product/{{$p->image}}" alt=""height="270px"></a>
 										</div>
 										<div class="single-item-body">
-											<p class="single-item-title">{{$p->name}}</p>
+											<p class="single-item-title">{{$p->name}} </p>
 											<p class="single-item-price" style="font-size: 16px">
 												@if($p->promotion_price==0)
 												<span class="flash-sale">{{number_format($p->unit_price)}} đồng</span>
@@ -36,13 +36,13 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href=" {{route('themgiohang',$p->id)}}"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Chi tiết <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="{{route('chitietsanpham',$p->id)}}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
 								</div>
 								@endforeach
-									<div class="row">{{$product->links()}}</div>
+							<div class="row">{{$product->links()}}</div>
 						</div> <!-- .beta-products-list -->
 
 					</div>
