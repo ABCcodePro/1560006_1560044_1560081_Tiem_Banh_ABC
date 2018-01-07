@@ -93,12 +93,12 @@ class PageController extends Controller
             're_password'=>'required|same:password'
         ],
         [
-            'email.required'=>'Vui l?ng nh?p email',
-            'email.email'=>'Không ðúng ð?nh d?ng email',
-            'email.unique'=>'Email ð? có ngý?i s? d?ng',
-            'password.required'=>'Vui l?ng nh?p password',
-            're_password.same'=>'M?t kh?u không gi?ng nhau',
-            'password.min'=>'M?t kh?u ít nh?t 6 k? t?'
+            'email.required'=>'Vui lòng nhập Email',
+            'email.email'=>'Không đúng định dạng Email',
+            'email.unique'=>'Email đã có người sử dụng',
+            'password.required'=>'Vui lòng nhập password',
+            're_password.same'=>'Mật khẩu không giống nhau',
+            'password.min'=>'Mật khẩu phải có ít nhất 6 kí tự?'
         ]);
         $user= new User();
         $user->full_name=$req->fullname;
