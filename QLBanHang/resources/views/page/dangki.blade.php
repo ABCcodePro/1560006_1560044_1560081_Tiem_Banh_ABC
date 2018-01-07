@@ -3,11 +3,11 @@
 <div class="inner-header">
 		<div class="container">
 			<div class="pull-left">
-				<h6 class="inner-title">Ðãng kí</h6>
+				<h6 class="inner-title">Đăng kí</h6>
 			</div>
 			<div class="pull-right">
 				<div class="beta-breadcrumb">
-					<a href="#">Home</a> / <span>Ðãng kí</span>
+					<a href="#">Home</a> / <span>Đăng kí</span>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -34,7 +34,7 @@
 					@endif
 
 					<div class="col-sm-6">
-						<h4>Ðãng kí</h4>
+						<h4>Ðăng kí</h4>
 						<div class="space20">&nbsp;</div>
 
 						
