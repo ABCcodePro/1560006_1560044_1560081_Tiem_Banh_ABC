@@ -63,4 +63,11 @@ class PageController extends Controller
         
         return redirect()->back();
     }
+    public function getSearch(Request $req){
+        $product=Product::where('name','like','%'.$req->key.'%')
+                        ->orWhere('unit_price',$req->key)
+                        ->paginate(8);
+        return view('page.search',compact('product'));
+    }
+
 }

@@ -49,3 +49,8 @@ Route::get('del-cart/{id}',[
 	'as'=>'xoagiohang',
 	'uses'=>'PageController@getDelItemCart'
 ]);
+
+Route::get('search',[
+	'as'=>'search',
+	'uses'=>'PageController@getSearch'
+]);
