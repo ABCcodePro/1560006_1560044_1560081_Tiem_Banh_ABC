@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Slide;
 use App\Product;
 use App\ProductType;
+use App\Cart;
+use Session;
+
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -35,6 +38,15 @@ class PageController extends Controller
     }
     public function getGioiThieu(){
     	return view('page.gioi_thieu');
+    }
+
+    public function getAddtoCart(Request $req,$id){
+        $product = Product::find($id);
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product,$id);
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
     }
 
 }
