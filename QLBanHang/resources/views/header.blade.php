@@ -38,16 +38,20 @@
 							<div class="beta-dropdown cart-body">
 							
 							@foreach($product_cart as $product)	
-								<div class="cart-item">
+							<div class="cart-item">
+								<a class = "cart-item-delete" href ="{{route('xoagiohang',$product['item']['id'])}}" ><i class ="fa fa-times"></i></a>
+								
 									<div class="media">
 										<a class="pull-left" href="#"><img src="source/image/product/{{$product['item']['image']}}" alt=""></a>
 										<div class="media-body">
 											<span class="cart-item-title">{{$product['item']['name']}}</span>
 											
-											<span class="cart-item-amount">{{$product['qty']}}*<span>{{$product['item']['unit_price']}}</span></span>
+											<span class="cart-item-amount">{{$product['qty']}}*<span>
+											@if($product['item']['promotion_price']==0){{$product['item']['unit_price']}}@else								{{$product['item']['promotion_price']}}@endif</span></span>
 										</div>
 									</div>
-								</div>
+								
+							</div>
 							@endforeach
 							
 
