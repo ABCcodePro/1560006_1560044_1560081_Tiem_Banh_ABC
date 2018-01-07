@@ -47,7 +47,7 @@
 											<span class="cart-item-title">{{$product['item']['name']}}</span>
 											
 											<span class="cart-item-amount">{{$product['qty']}}*<span>
-											@if($product['item']['promotion_price']==0){{$product['item']['unit_price']}}@else								{{$product['item']['promotion_price']}}@endif</span></span>
+											{{$product['item']['unit_price']}}</span></span>
 										</div>
 									</div>
 								
@@ -56,7 +56,7 @@
 							
 
 								<div class="cart-caption">
-									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{Session('cart')->totalPrice}}</span></div>
+									<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{Session('cart')->totalPrice}} đồng</span></div>
 									<div class="clearfix"></div>
 
 									<div class="center">
