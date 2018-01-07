@@ -6,40 +6,43 @@ use App\Product;
 use App\ProductType;
 use App\Cart;
 use Session;
-
+use App\User;
+use Hash;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     //Lay trang chu
     public function getIndex(){
-    	$slide=Slide::all();
-    	$new_product=Product::where('new',1)->paginate(4);
-    	$sanpham_khuyenmai=Product::where('promotion_price','<>',0)->paginate(8);
-    	return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
-           //   return view('page.trangchu',['slide'=>$slide]);
+        $slide=Slide::all();
+        $new_product=Product::where('new',1)->paginate(4);
+        $sanpham_khuyenmai=Product::where('promotion_price','<>',0)->paginate(12);
+        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
+        return view('page.trangchu',['slide'=>$slide]);
     }
 
     public function getLoaiSp($type){
         $sp_theoloai=Product::where('id_type',$type)->get();
-        $sp_khac=Product::where('id_type','<>',$type)->paginate(3);
+        $sp_khac=Product::where('id_type','<>',$type)->paginate(6);
         $loai=ProductType::all();
         $loai_sp=ProductType::where('id',$type)->first();
-    	return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','loai_sp'));
+        return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','loai_sp'));
     }
 
     public function getChitiet(Request $req){
         $sanpham=Product::where('id',$req->id)->first();
         $sp_tuongtu=Product::where('id_type',$sanpham->id_type)->paginate(6);
-    	return view('page.chitiet_sanpham',compact('sanpham','sp_tuongtu'));
+        $sp_khuyenmai=Product::where('promotion_price','<>',0)->paginate(4);
+        $sp_moi=Product::where('new',1)->paginate(4);
+        return view('page.chitiet_sanpham',compact('sanpham','sp_tuongtu','sp_khuyenmai','sp_moi'));
     }
 
     public function getLienHe(){
-    	return view('page.lienhe');
+        return view('page.lienhe');
     }
 
     public function getGioiThieu(){
-    	return view('page.gioi_thieu');
+        return view('page.gioi_thieu');
     }
 
     public function getAddtoCart(Request $req,$id){
@@ -79,5 +82,31 @@ class PageController extends Controller
 
     public function getDangKi(){
         return view ('page.dangki');
+    }
+
+    public function postDangKi(Request $req){
+        $this-> validate($req,
+        [
+            'email'=>'required|email|unique:users,email',
+            'password'=>'required|min:6|max:20',
+            'fullname'=>'required',
+            're_password'=>'required|same:password'
+        ],
+        [
+            'email.required'=>'Vui l?ng nh?p email',
+            'email.email'=>'Không ðúng ð?nh d?ng email',
+            'email.unique'=>'Email ð? có ngý?i s? d?ng',
+            'password.required'=>'Vui l?ng nh?p password',
+            're_password.same'=>'M?t kh?u không gi?ng nhau',
+            'password.min'=>'M?t kh?u ít nh?t 6 k? t?'
+        ]);
+        $user= new User();
+        $user->full_name=$req->fullname;
+        $user->email=$req->email;
+        $user->password=Hash::make($req->password);
+        $user->phone=$req->phone;
+        $user->address=$req->address;
+        $user->save();
+        return redirect()->back()->with('thanhcong','Ð? t?o tài kho?n thành công');
     }
 }

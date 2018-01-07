@@ -64,3 +64,8 @@ Route::get('dang-ki',[
 	'as'=>'signup',
 	'uses'=>'PageController@getDangKi'
 ]);
+
+Route::post('dang-ki',[
+	'as'=>'signup',
+	'uses'=>'PageController@postDangKi'
+]);
