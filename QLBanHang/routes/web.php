@@ -54,3 +54,13 @@ Route::get('search',[
 	'as'=>'search',
 	'uses'=>'PageController@getSearch'
 ]);
+
+Route::get('dang-nhap',[
+	'as'=>'login',
+	'uses'=>'PageController@getLogin'
+]);
+
+Route::get('dang-ki',[
+	'as'=>'signup',
+	'uses'=>'PageController@getDangKi'
+]);
