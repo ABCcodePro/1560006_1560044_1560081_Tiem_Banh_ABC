@@ -107,6 +107,6 @@ class PageController extends Controller
         $user->phone=$req->phone;
         $user->address=$req->address;
         $user->save();
-        return redirect()->back()->with('thanhcong','Ð? t?o tài kho?n thành công');
+        return redirect()->back()->with('thanhcong','Đã tạo tài khoản thành công');
     }
 }
