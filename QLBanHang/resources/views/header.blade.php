@@ -52,8 +52,7 @@
 										<div class="media-body">
 											<span class="cart-item-title">{{$product['item']['name']}}</span>
 											
-											<span class="cart-item-amount">{{$product['qty']}}*<span>
-											{{$product['item']['unit_price']}}</span></span>
+											<span class="cart-item-amount">{{$product['qty']}}*<span>@if($product['item']['promotion_price']==0){{$product['item']['unit_price']}}@else {{$product['item']['promotion_price']}} @endif    </span></span>
 										</div>
 									</div>
 								
