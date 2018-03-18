@@ -13,28 +13,40 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="admin/loaisanpham/danhsach"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Loại Sản Phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="admin/loaisanpham/danhsach">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
+                                    <a href="admin/loaisanpham/them">Thêm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Sản Phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Product</a>
+                                    <a href="admin/sanpham/danhsach">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Product</a>
+                                    <a href="admin/sanpham/them">Thêm</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Slide<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin/slide/danhsach">Danh Sách</a>
+                                </li>
+                                <li>
+                                    <a href="admin/slide/them">Thêm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -43,10 +55,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List User</a>
+                                    <a href="admin/user/danhsach">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add User</a>
+                                    <a href="admin/user/them">Thêm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -54,4 +66,4 @@
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
-            </div>
+</div>

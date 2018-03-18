@@ -116,6 +116,7 @@ class PageController extends Controller
         Session::forget('cart');
         return redirect()->back()->with('thongbao','Đặt Hàng thành công');
         
-
     }
+
+    
 }

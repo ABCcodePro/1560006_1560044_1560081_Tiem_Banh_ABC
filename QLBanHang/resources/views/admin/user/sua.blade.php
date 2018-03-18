@@ -1,57 +1,60 @@
 @extends('admin.index')
 @section('content')
-<!-- Page Content -->
-    <div id="page-wrapper">
+<div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>Edit</small>
+                        <h1 class="page-header">Người Dùng
+                            <small>Thêm</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
-                            <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
-                                </select>
+                        @if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors ->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
                             </div>
-                            <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                        @endif
+
+                        @if(session('thongbao'))
+                            <div class="alert alert-success">
+                                {{session('thongbao')}}
                             </div>
+                        @endif
+
+                     
+                        <form action="admin/user/sua/{{$nguoidung->id}}" method="POST" enctype="multipart/form-data">
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                                <label>Tên Người Dùng</label>
+                                <input class="form-control" type="text" name="name" value="{{$nguoidung->full_name}}"/>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                                <label>Email</label>
+                                <input class="form-control" type="email" name="email" value="{{$nguoidung->email}}"  />
                             </div>
+                            
                             <div class="form-group">
-                                <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label>Mật Khẩu</label>
+                                <input class="form-control" type="password" name="password"   />
                             </div>
-                            <div class="form-group">
-                                <label>Category Status</label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
-                                </label>
+
+                             <div class="form-group">
+                                <label>Mật Khẩu Nhập Lại</label>
+                                <input class="form-control" type="password" name="confirm_password"   />
                             </div>
-                            <button type="submit" class="btn btn-default">Category Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
+                           
+                            <button type="submit" class="btn btn-default">Sửa</button>
+                            <button type="reset" class="btn btn-default">Làm Mới</button>
                         <form>
                     </div>
                 </div>
-                <!-- /.row -->
+              
             </div>
-            <!-- /.container-fluid -->
-    </div>
-<!-- /#page-wrapper -->
+          
+</div>
 @endsection

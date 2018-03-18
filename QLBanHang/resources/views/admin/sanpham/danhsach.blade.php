@@ -1,49 +1,65 @@
 @extends('admin.index')
 @section('content')
-<!-- Page Content -->
-    <div id="page-wrapper">
+<div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>List</small>
+                        <h1 class="page-header">Sản Phẩm
+                            <small>Danh Sách</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
+                    @if(session('thongbao'))
+                            <div class="alert alert-success">
+                                {{session('thongbao')}}
+                            </div>
+                     @endif
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Category Parent</th>
-                                <th>Status</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Loại Sản Phẩm</th>
+                                <th>Miêu Tả</th>
+                                <th>Gía Gốc</th>
+                                <th>Gía Khuyến Mãi</th>
+                                <th>Sản Phẩm Mới</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($sanpham as $sp)
                             <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Tin Tức</td>
-                                <td>None</td>
-                                <td>Hiện</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                <td>{{$sp->id}}</td>
+                                <td>
+                                    {{$sp->name}}
+                                    
+                                </td>
+                
+                                <td>{{$sp->product_type->name}}</td>
+                                <td>
+                                    <p>{{$sp->description}}</p>
+                                    <img width="100px" src="Source/image/product/{{$sp->image}}" alt="" />
+                                </td>
+                                <td>{{$sp->unit_price}}</td>
+                                <td>{{$sp->promotion_price}}</td>
+                                <td>
+                                    @if($sp->new== 1)
+                                    {{'Có'}}
+                                    @else
+                                    {{'Không'}}
+                                    @endif
+                                </td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/sanpham/xoa/{{$sp->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/sanpham/sua/{{$sp->id}}">Edit</a></td>
                             </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Bóng Đá</td>
-                                <td>Thể Thao</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-    </div>
-<!-- /#page-wrapper -->
-@endsection
+ </div>
+ @endsection
