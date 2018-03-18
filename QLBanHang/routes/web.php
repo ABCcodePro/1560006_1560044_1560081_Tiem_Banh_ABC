@@ -57,3 +57,13 @@ Route::get('search',[
 ]);
 
 Auth::routes();
+
+Route::get('dat_hang',[
+    'as'=>'dat-hang',
+    'uses'=>'PageController@getdathang'
+]);
+
+Route::post('dat_hang',[
+    'as'=>'dat-hang',
+    'uses'=>'PageController@postdathang'
+]);

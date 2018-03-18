@@ -9,6 +9,9 @@ use Session;
 use App\User;
 use Hash;
 use Illuminate\Http\Request;
+use App\Customer;
+use App\Bill;
+use App\BillDetail;
 
 class PageController extends Controller
 {
@@ -76,37 +79,43 @@ class PageController extends Controller
         return view('page.search',compact('product'));
     }
 
-    public function getLogin(){
-        return view('page.dangnhap');
+     public function getdathang()
+    {
+        return view('page.dat_hang');
     }
 
-    public function getDangKi(){
-        return view ('page.dangki');
-    }
+    public function postdathang(Request $req)
+    {
+        $cart = Session::get('cart');
+        $customer = new Customer;
+        $customer->name = $req ->name;
+        $customer->gender=$req->gender;
+        $customer->email = $req->email;
+        $customer->address = $req->address;
+        $customer->phone_number=$req->phone;
+        $customer->note = $req->notes;
+        $customer->save();
 
-    public function postDangKi(Request $req){
-        $this-> validate($req,
-        [
-            'email'=>'required|email|unique:users,email',
-            'password'=>'required|min:6|max:20',
-            'fullname'=>'required',
-            're_password'=>'required|same:password'
-        ],
-        [
-            'email.required'=>'Vui lòng nhập Email',
-            'email.email'=>'Không đúng định dạng Email',
-            'email.unique'=>'Email đã có người sử dụng',
-            'password.required'=>'Vui lòng nhập password',
-            're_password.same'=>'Mật khẩu không giống nhau',
-            'password.min'=>'Mật khẩu phải có ít nhất 6 kí tự?'
-        ]);
-        $user= new User();
-        $user->full_name=$req->fullname;
-        $user->email=$req->email;
-        $user->password=Hash::make($req->password);
-        $user->phone=$req->phone;
-        $user->address=$req->address;
-        $user->save();
-        return redirect()->back()->with('thanhcong','Đã tạo tài khoản thành công');
+        $bill = new Bill;
+        $bill->id_customer = $customer->id;
+        $bill->date_order = date('Y-m-d');
+        $bill->total = $cart->totalPrice;
+        $bill->payment = $req->payment;
+        $bill->note = $req->notes;
+        $bill->save();
+
+        foreach($cart->items as $key => $value)
+        {
+            $bill_detail = new BillDetail;
+            $bill_detail->id_bill= $bill->id;
+            $bill_detail->id_product = $key;
+            $bill_detail->quantity = $value['qty'];
+            $bill_detail->unit_price = $value['price'] / $value['qty'];
+            $bill_detail->save();
+        }
+        Session::forget('cart');
+        return redirect()->back()->with('thongbao','Đặt Hàng thành công');
+        
+
     }
 }
