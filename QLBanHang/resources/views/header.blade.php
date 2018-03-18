@@ -9,14 +9,21 @@
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-						<li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
 						@if(Auth::check())
-						<li><a href="">Chào bạn {{Auth::user()->full_name}}</a></li>
-						<li><a href="{{Route('logout')}}">Đăng xuất</a></li>
-						@else
-						<li><a href="{{Route('signup')}}">Đăng kí</a></li>
-						<li><a href="{{Route('login')}}">Đăng nhập</a></li>
-						@endif
+						<li><a href="">Chào bạn {{Auth::user()->name}}</a></li>
+						<li><a href="{{route('logout')}}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Đăng xuất
+                            </a>
+                            <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                         </li>
+					@else
+						<li><a href="{{route('register')}}">Đăng kí</a></li>
+						<li><a href="{{route('login')}}">Đăng nhập</a></li>
+					@endif
 
 					</ul>
 				</div>

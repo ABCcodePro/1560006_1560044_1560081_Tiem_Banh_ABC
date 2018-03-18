@@ -55,27 +55,4 @@ Route::get('search',[
 	'uses'=>'PageController@getSearch'
 ]);
 
-
-Route::get('dang-nhap',[
-	'as'=>'login',
-	'uses'=>'PageController@getLogin'
-]);
-Route::post('dang-nhap',[
-	'as'=>'login',
-	'uses'=>'PageController@postLogin'
-]);
-Route::post('dang-xuat',[
-	'as'=>'logout',
-	'uses'=>'PageController@getLogout'
-]);
-
-Route::get('dang-ki',[
-	'as'=>'signup',
-	'uses'=>'PageController@getDangKi'
-]);
-
-Route::post('dang-ki',[
-	'as'=>'signup',
-	'uses'=>'PageController@postDangKi'
-]);
-
+Auth::routes();

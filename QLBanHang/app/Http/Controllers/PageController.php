@@ -38,7 +38,7 @@ class PageController extends Controller
     }
 
     public function getLienHe(){
-        return view('page.lienhe');
+        return view('page.lien_he');
     }
 
     public function getGioiThieu(){
